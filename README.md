@@ -1,36 +1,41 @@
 # 📰 Fake News Detection App
 
-A supervised Machine Learning project that predicts whether a given news article is **Fake** or **Real**.  
-Built with **Next.js (TypeScript)**, **TailwindCSS**, and a **Node.js + Python (ML model) backend**.  
+A **supervised Machine Learning project** that predicts whether a given news article is **Fake** or **Real**.
+Built with **Next.js (TypeScript)**, **TailwindCSS**, and a **Flask (Python) backend** for ML inference.
 
 ---
 
 ## ⚡ Features
-- 🔹 Detects **Fake vs Real** news in real-time.  
-- 🔹 Clean and modern **Next.js frontend** with TailwindCSS.  
-- 🔹 **Preprocessing pipeline** (lowercasing, punctuation removal, stopword removal, stemming).  
-- 🔹 Trained ML models: **Random Forest, SVM, KNN** (compared for performance).  
-- 🔹 Confidence score (%) for predictions.  
-- 🔹 REST API for predictions (`/predict`).  
+
+* 🔹 Detects **Fake vs Real** news in real-time.
+* 🔹 Modern, responsive **Next.js frontend** styled with TailwindCSS.
+* 🔹 **Text preprocessing pipeline** (lowercasing, punctuation removal, stopword removal, stemming).
+* 🔹 Multiple trained ML models compared: **Logistic Regression, SVM, KNN, Random Forest, Ensemble models**.
+* 🔹 Returns **prediction label** (Fake/Real) and **confidence score**.
+* 🔹 REST API endpoint `/predict` for easy integration.
 
 ---
 
 ## 🛠️ Tech Stack
+
 ### Frontend
-- [Next.js (TypeScript)](https://nextjs.org/)
-- [TailwindCSS](https://tailwindcss.com/)
+
+* [Next.js (TypeScript)](https://nextjs.org/)
+* [TailwindCSS](https://tailwindcss.com/)
 
 ### Backend
-- [Node.js](https://nodejs.org/)
-- [Express.js](https://expressjs.com/)
-- [Python + scikit-learn](https://scikit-learn.org/) for ML model training  
+
+* [Python](https://www.python.org/)
+* [Flask](https://flask.palletsprojects.com/)
+* [scikit-learn](https://scikit-learn.org/) for ML model training
 
 ### ML/NLP
-- Text Normalization (lowercasing, punctuation removal)
-- Tokenization & Stopword Removal
-- Stemming (Porter Stemmer)
-- TF-IDF Vectorization
-- RandomForest, SVM, KNN Classifiers
+
+* Text Normalization (lowercasing, punctuation removal)
+* Tokenization & Stopword Removal
+* Stemming (Porter Stemmer)
+* TF-IDF Vectorization
+* Models trained: Logistic Regression, SVM, KNN, Random Forest, Ensemble
 
 ---
 
@@ -45,21 +50,24 @@ Built with **Next.js (TypeScript)**, **TailwindCSS**, and a **Node.js + Python (
 | Stacking Ensemble      | 0.8297     | \~0.83          | \~0.83       | \~0.83         |
 | **Voting Ensemble 🏆** | **0.8322** | **0.83**        | **0.83**     | **0.83**       |
 
-The best model was an ensemble (Logistic Regression + SVM + Random Forest) achieving an accuracy of 83.2%, outperforming individual models.  
+📊 See bar chart comparison:
+
+![Model Comparison](./model_comparison.png)
 
 ---
 
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/fake-news-detection.git
 cd fake-news-detection
-````
+```
 
 ### 2. Install dependencies
 
-Frontend:
+**Frontend** (Next.js):
 
 ```bash
 cd frontend
@@ -67,18 +75,10 @@ npm install
 npm run dev
 ```
 
-Backend:
+**Backend** (Flask + Python ML API):
 
 ```bash
 cd backend
-npm install
-npm run dev
-```
-
-### 3. Start ML API (Python)
-
-```bash
-cd ml-model
 pip install -r requirements.txt
 python app.py
 ```
@@ -88,35 +88,18 @@ python app.py
 ## 📊 Model Training
 
 * Dataset: [Fake News Dataset](https://www.kaggle.com/c/fake-news/data)
-* Models trained:
-
-  * Random Forest
-  * SVM
-  * KNN
+* Models trained: Logistic Regression, Random Forest, SVM, KNN, Ensemble
 * Vectorization: **TF-IDF**
 * Evaluation Metrics: **Accuracy, Precision, Recall, F1-score**
-
-📈 *Add your final accuracy and performance table here*
 
 ---
 
 ## 🎯 Usage
 
-1. Open the frontend app.
-2. Paste or type any news article text.
-3. Get instant prediction with **label (Fake/Real)** and **confidence score**.
-
----
-
-## 🌐 Live Demo
-
-👉 \[Add your deployed app link here]
-
----
-
-## 📸 Screenshots
-
-*(Add UI screenshots here after deployment)*
+1. Start the backend (`python app.py`) → runs on **[http://localhost:5000](http://localhost:5000)**.
+2. Start the frontend (`npm run dev`) → runs on **[http://localhost:3000](http://localhost:3000)**.
+3. Enter/paste news article text in the frontend app.
+4. Receive **Fake/Real** prediction + **confidence score** instantly.
 
 ---
 
@@ -125,9 +108,8 @@ python app.py
 ```
 fake-news-detection/
 │── frontend/        # Next.js + Tailwind frontend
-│── backend/         # Node.js Express API
-│── ml-model/        # Python scikit-learn model + Flask API
-│── utils/           # Preprocessing utilities
+│── backend/         # Flask ML backend (app.py, models, preprocessing)
+│── model_comparison.png   # Bar chart of model comparison
 │── README.md
 ```
 
@@ -135,13 +117,12 @@ fake-news-detection/
 
 ## 🤝 Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you’d like to change.
+Pull requests are welcome! For major changes, please open an issue to discuss first.
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
 
 ---
-
