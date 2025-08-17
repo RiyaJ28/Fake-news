@@ -14,7 +14,7 @@ export default function Home() {
     setResult(null);
 
     try {
-      const res = await axios.post("http://127.0.0.1:5000/predict", { news }); // Flask endpoint
+      const res = await axios.post("https://fake-news-inse.onrender.com/predict", { news }); // Flask endpoint
       setResult(res.data);
     } catch (err) {
       console.error(err);
