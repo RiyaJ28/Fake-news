@@ -4,8 +4,8 @@ from flask_cors import CORS
 
 
 # Load the saved vectorizer and model
-vectorizer = joblib.load("./backend/tfidf_vectorizer.pkl")
-model = joblib.load("./backend/fake_news_model.pkl")
+vectorizer = joblib.load("tfidf_vectorizer.pkl")
+model = joblib.load("fake_news_model.pkl")
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -40,4 +40,5 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="127.0.0.1", port=5000)
+    app.run(debug=False, host="0.0.0.0", port=5000)
+
