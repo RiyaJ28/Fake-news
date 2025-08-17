@@ -99,7 +99,7 @@ python app.py
 1. Start the backend (`python app.py`) → runs on **[http://localhost:5000](http://localhost:5000)**.
 2. Start the frontend (`npm run dev`) → runs on **[http://localhost:3000](http://localhost:3000)**.
 3. Enter/paste news article text in the frontend app.
-4. Receive **Fake/Real** prediction + **confidence score** instantly.
+4. Receive **Fake/Real** prediction.
 
 ---
 
@@ -121,8 +121,3 @@ Pull requests are welcome! For major changes, please open an issue to discuss fi
 
 ---
 
-## 📜 License
-
-This project is licensed under the **MIT License**.
-
----
