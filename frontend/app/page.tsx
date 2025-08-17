@@ -58,7 +58,6 @@ export default function Home() {
                 {result.prediction}
               </span>
             </p>
-            <p className="text-gray-600">Confidence: {result.confidence}</p>
           </div>
         )}
       </div>

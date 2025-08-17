@@ -28,13 +28,11 @@ def predict():
 
         X = vectorizer.transform([text])
         prediction = model.predict(X)[0]
-        proba = model.predict_proba(X)[0].max() if hasattr(model, "predict_proba") else None
 
-        label = "Fake" if prediction == 1 else "Real"
+        label = "Fake" if prediction == 0 else "Real"
 
         return jsonify({
-            "prediction": label,
-            "confidence": f"{proba:.2f}" if proba else "N/A"
+            "prediction": label
         })
 
     except Exception as e:
