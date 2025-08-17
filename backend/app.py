@@ -1,43 +1,40 @@
 from flask import Flask, request, jsonify
 import joblib
-import re
-import string
+from flask_cors import CORS
 
-# Load model and vectorizer
-model = joblib.load("fake_news_model.pkl")
-vectorizer = joblib.load("tfidf_vectorizer.pkl")  # save this when training
 
+# Load the saved vectorizer and model
+vectorizer = joblib.load("./backend/tfidf_vectorizer.pkl")
+model = joblib.load("./backend/fake_news_model.pkl")
+
+# Initialize Flask app
 app = Flask(__name__)
+CORS(app) 
 
-# --- Preprocessing function ---
-def clean_text(text):
-    text = text.lower()
-    text = re.sub(f"[{string.punctuation}]", " ", text)  # remove punctuation
-    text = re.sub(r"\s+", " ", text).strip()  # remove extra spaces
-    return text
+@app.route("/")
+def home():
+    return {"message": "Resume-JD Match Predictor API is running!"}
 
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
+        # Get JSON payload
         data = request.get_json()
-        news = data.get("news", "")
-
-        if not news.strip():
+        #print("Received data:", data)
+        if not data or "news" not in data:
             return jsonify({"error": "No news text provided"}), 400
 
-        # Preprocess
-        cleaned = clean_text(news)
+        text = data["news"]
 
-        # Transform with TF-IDF
-        X = vectorizer.transform([cleaned])
+        X = vectorizer.transform([text])
+        prediction = model.predict(X)[0]
+        proba = model.predict_proba(X)[0].max() if hasattr(model, "predict_proba") else None
 
-        # Predict
-        pred = model.predict(X)[0]
-        label = "FAKE" if pred == 1 else "REAL"
+        label = "Fake" if prediction == 1 else "Real"
 
         return jsonify({
-            "prediction": int(pred),
-            "label": label
+            "prediction": label,
+            "confidence": f"{proba:.2f}" if proba else "N/A"
         })
 
     except Exception as e:
@@ -45,4 +42,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=True, host="127.0.0.1", port=5000)

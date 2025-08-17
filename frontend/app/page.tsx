@@ -14,11 +14,11 @@ export default function Home() {
     setResult(null);
 
     try {
-      const res = await axios.post("http://localhost:5000/predict", { news });
+      const res = await axios.post("http://127.0.0.1:5000/predict", { news }); // Flask endpoint
       setResult(res.data);
     } catch (err) {
       console.error(err);
-      alert("Error connecting to backend");
+      alert("⚠️ Error connecting to Flask backend. Make sure Flask is running on port 5000.");
     } finally {
       setLoading(false);
     }
