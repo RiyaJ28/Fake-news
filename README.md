@@ -1,4 +1,3 @@
-````markdown
 # 📰 Fake News Detection App
 
 A supervised Machine Learning project that predicts whether a given news article is **Fake** or **Real**.  
@@ -131,16 +130,3 @@ This project is licensed under the MIT License.
 
 ---
 
-```
-
----
-
-This will make your repo **professional & recruiter-ready**.  
-Later you’ll just update:  
-
-- **Live Demo link** (e.g., Vercel/Netlify + Render/Heroku).  
-- **Accuracy table** from your experiments.  
-- **Screenshots** of the UI.  
-
-👉 Do you want me to also draft a **performance comparison table template** for RandomForest, SVM, KNN so you just fill in numbers after training?
-```
