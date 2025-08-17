@@ -34,6 +34,20 @@ Built with **Next.js (TypeScript)**, **TailwindCSS**, and a **Node.js + Python (
 
 ---
 
+## 📊 Model Performance Comparison
+
+| Model                        | Accuracy   | Precision (Class 0 / Class 1) | Recall (Class 0 / Class 1) | F1-Score (Avg) | Notes                         |
+| ---------------------------- | ---------- | ----------------------------- | -------------------------- | -------------- | ----------------------------- |
+| Logistic Regression          | 0.8310     | 0.83 / 0.83                   | 0.85 / 0.81                | 0.83           | Stable & consistent           |
+| SVM (LinearSVC)              | 0.8227     | 0.82 / 0.82                   | 0.84 / 0.81                | 0.82           | Computationally expensive     |
+| KNN                          | 0.5817     | 0.64 / 0.55                   | 0.42 / 0.75                | 0.57           | Performs poorly, not suitable |
+| Random Forest                | 0.8212     | 0.81 / 0.84                   | 0.86 / 0.78                | 0.82           | Good balance, interpretable   |
+| **Ensemble (LR + SVM + RF)** | **0.8322** | 0.83 / 0.84                   | 0.85 / 0.81                | 0.83           | ✅ Best performing             |
+
+The best model was an ensemble (Logistic Regression + SVM + Random Forest) achieving an accuracy of 83.2%, outperforming individual models.  
+
+---
+
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
